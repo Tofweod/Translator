@@ -38,3 +38,6 @@
 
 [c# - Asynchronously wait for Task to complete with timeout](https://stackoverflow.com/questions/4238345/asynchronously-wait-for-taskt-to-complete-with-timeout)
 
+## 待实现
+
+​	本软件的字体设置以及穿透设置是**未实现**的，未来版本可能添加。
