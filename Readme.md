@@ -18,11 +18,13 @@
 
 ​		**在使用翻译器前应确保自己已注册对应的翻译API**
 
+​		exe文件目录下的Config文件内有部分扩展设置，可按需自行修改
+
 相关教程
 
 ​	[一文教你快速注册OpenAi（ChatGPT），国内也可以！ - 腾讯云开发者社区-腾讯云 (tencent.com)](https://cloud.tencent.com/developer/article/2190154)-在注册成功后可以在个人页面申请一个API Key
 
- 	[推荐一款好用的免费翻译API——百度翻译 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/81945858)
+   [推荐一款好用的免费翻译API——百度翻译 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/81945858)
 
 ## 框架
 
