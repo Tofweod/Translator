@@ -1,0 +1,32 @@
+﻿<Window x:Class="Translator.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Translator"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d"
+        Title="Settings" Height="450" Width="800"
+        ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <hc:SideMenu BorderThickness="1" Width="100" HorizontalAlignment="Left" VerticalAlignment="Stretch" >
+            <hc:Interaction.Triggers>
+                <hc:EventTrigger EventName="SelectionChanged">
+                    <hc:EventToCommand Command="{Binding SwitchItemCmd}" PassEventArgsToCommand="False"/>
+                </hc:EventTrigger>
+            </hc:Interaction.Triggers>
+            <hc:SideMenuItem Header="通用选项" Selected="General_Selected"></hc:SideMenuItem>
+            <hc:SideMenuItem Header="API选项">
+                <hc:SideMenuItem Header="Chatgpt" Selected="ChatGPT_Selected"></hc:SideMenuItem>
+                <hc:SideMenuItem Header="百度翻译API" Selected="Baidu_Selected"></hc:SideMenuItem>
+                <hc:SideMenuItem Header="DeepL" Selected="Deepl_Selected"></hc:SideMenuItem>
+            </hc:SideMenuItem>
+            <hc:SideMenuItem Header="不要点开！" Selected="DontClick_Selected" ></hc:SideMenuItem>
+        </hc:SideMenu>
+        <Frame Grid.Column="1" Name="SettingFrame" Source="SettingPages/General_Selected_Page.xaml" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

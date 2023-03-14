@@ -1,0 +1,28 @@
+﻿<Page x:Class="Translator.SettingPages.TranslatorPages.Deepl_Selected_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Translator.SettingPages.TranslatorPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Deepl_Selected_Page">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock FontSize="40" FontWeight="Bold" TextAlignment="Center">
+                为什么没有实现DeepL相关API?
+            </TextBlock>
+            <TextBlock FontSize="20" TextWrapping="Wrap">
+                 &#160;&#160;&#160;&#160;Deepl的翻译效果无疑是十分优秀的，但是出于一下原因目前<Bold>暂时</Bold>不打算实现其接口。<LineBreak></LineBreak>
+                 &#160;&#160;&#160;&#160;&#160;- DeepL虽然添加了Api的术语表，但是在中文与其他语言之间并没有相应术语表。<LineBreak></LineBreak>
+                 &#160;&#160;&#160;&#160;&#160;- DeepL的api接口并不免费，每个月费用约为30元。且由于不支持中国银行卡，充值过程不友好。<LineBreak></LineBreak>
+                 &#160;&#160;&#160;&#160;&#160;- DeepL本身推出了一款免费的翻译软件DeepL，其使用体验以及稳定性无疑更佳。<LineBreak></LineBreak>
+                 &#160;&#160;&#160;&#160;综上，<Bold>未来可能</Bold>实现相应接口。
+            </TextBlock>
+            <TextBlock FontSize="50" TextAlignment="Right" >
+                Sorry!
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Page>

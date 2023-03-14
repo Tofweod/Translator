@@ -1,0 +1,20 @@
+﻿<Page x:Class="Translator.SettingPages.General_Selected_Page"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Translator.SettingPages"
+      xmlns:hc="https://handyorg.github.io/handycontrol"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Lang_Selected_Page">
+
+    <Grid>
+        <Canvas>
+            <hc:ComboBox Name="TranslatorCombox" Width="160"  Canvas.Left="250" Canvas.Top="85"  hc:TitleElement.Title="翻译API:" hc:TitleElement.TitlePlacement="Left" ></hc:ComboBox>
+            <hc:ComboBox Name="SrcLangCombox" Width="130" Canvas.Left="130" Canvas.Top="155"  hc:TitleElement.Title="源语言:" hc:TitleElement.TitlePlacement="Left"></hc:ComboBox>
+            <hc:ComboBox Name="DstLangCombox" Width="140" Canvas.Left="400" Canvas.Top="155" hc:TitleElement.Title="目标语言:" hc:TitleElement.TitlePlacement="Left"></hc:ComboBox>
+            <Button Content="确认" Canvas.Left="470" Canvas.Top="250" Click="General_Click"></Button>
+        </Canvas>
+    </Grid>
+</Page>

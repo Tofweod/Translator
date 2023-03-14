@@ -1,0 +1,84 @@
+﻿<Window x:Class="Translator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Translator"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="800"  
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Topmost="True" >
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" GlassFrameThickness="20"/>
+    </WindowChrome.WindowChrome>
+
+    <Window.Background>
+        <SolidColorBrush x:Name="total_Background" ></SolidColorBrush>
+    </Window.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" >
+            <Menu DockPanel.Dock="Top" WindowChrome.IsHitTestVisibleInChrome="True">
+                <Menu.Background>
+                    <SolidColorBrush  Color="{Binding Color,ElementName=total_Background, Mode=OneWay}" ></SolidColorBrush>
+                </Menu.Background>
+                <MenuItem Header="Drag" MouseMove="Drag">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Content="拖动" PlacementType="Top"/>
+                    </hc:Poptip.Instance>
+                </MenuItem>
+                <MenuItem  Name="Valid"  Header="Valid" Click="Valid_Button_Click" FontWeight="Bold">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Content="是否进行翻译" PlacementType="Top" FontWeight="Normal"/>
+                    </hc:Poptip.Instance>
+                </MenuItem>
+                <MenuItem Header="Font" Click="Font_Button_Click">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Content="字体" PlacementType="Top"/>
+                    </hc:Poptip.Instance>
+                </MenuItem>
+                <MenuItem Header="Penetration" Click="Penetration_Button_Click">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Content="穿透" PlacementType="Top"/>
+                    </hc:Poptip.Instance>
+                </MenuItem>
+                <MenuItem Header="Background" Click="Background_Button_Click">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Content="背景" PlacementType="Top"/>
+                    </hc:Poptip.Instance>
+                </MenuItem>
+                <MenuItem Header="Settings" Click="Settings_Button_Click">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Content="设置" PlacementType="Top"/>
+                    </hc:Poptip.Instance>
+                </MenuItem>
+                <MenuItem Header="Min" Click="Window_StateChanged">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Content="最小化" PlacementType="Top"/>
+                    </hc:Poptip.Instance>
+                </MenuItem>
+                <MenuItem Header="Exit" Click="Exit_Button_Click">
+                    <hc:Poptip.Instance>
+                        <hc:Poptip Content="退出" PlacementType="Top"/>
+                    </hc:Poptip.Instance>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <Grid  Name="Body" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="4*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Name="source_lang" Grid.Row="0" TextWrapping="Wrap"/>
+            <TextBlock Name="dest_lang" Grid.Row="1" TextWrapping="Wrap" />
+        </Grid>
+    </Grid>
+</Window>
