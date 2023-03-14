@@ -6,7 +6,7 @@
 
 ## 安装
 
-
+[Release Translator · Tofweod/Translator (github.com)](https://github.com/Tofweod/Translator/releases/tag/2.0)
 
 ## 使用
 
