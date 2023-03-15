@@ -6,7 +6,7 @@
 
 ## 安装
 
-[Release Translator · Tofweod/Translator (github.com)](https://github.com/Tofweod/Translator/releases/tag/2.0)
+[Release Translator · Tofweod/Translator (github.com)](https://github.com/Tofweod/Translator/releases/tag/2.0) 以及演示视频[BV1EM411W7Dk](https://www.bilibili.com/video/BV1EM411W7Dk)
 
 ## 使用
 
