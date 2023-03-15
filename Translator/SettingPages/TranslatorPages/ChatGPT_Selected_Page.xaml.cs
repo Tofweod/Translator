@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Translator.TranslatorApi;
 
 namespace Translator.SettingPages.TranslatorPages
 {
@@ -40,6 +41,12 @@ namespace Translator.SettingPages.TranslatorPages
                 config.AppSettings.Settings["ChatgptKey"].Value = key.Text; 
             }
             Settings.ChatgptKey = key.Text;
+            UpdateChanges();
+        }
+
+        private void UpdateChanges()
+        {
+            Common.GetTranslatorDict()["ChatGPT"].CheckUpdate();
         }
     }
 }

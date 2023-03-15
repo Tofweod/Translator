@@ -9,6 +9,8 @@ namespace Translator.TranslatorApi
     public interface ITranslator
     {
         Task<string> TranslateAsync(string text,string src,string dst);
+
+        void CheckUpdate();
     }
 }
 

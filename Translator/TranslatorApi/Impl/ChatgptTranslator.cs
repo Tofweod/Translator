@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO.Packaging;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using HandyControl.Expression.Shapes;
 using Newtonsoft.Json;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -15,9 +17,19 @@ namespace Translator.TranslatorApi.Impl
         string apiKey = Settings.ChatgptKey;
         const string url = "https://api.openai.com/v1/chat/completions";
 
+        public void CheckUpdate()
+        {
+            apiKey = Settings.ChatgptKey;
+        }
+
         public async Task<string> TranslateAsync(string text, string src, string dst)
         {
             return await DoTranslation(text,src,dst);
+        }
+
+        public void SetApiKey(string s)
+        {
+            apiKey = s; 
         }
 
 
@@ -64,6 +76,22 @@ namespace Translator.TranslatorApi.Impl
                     return "Unknown Error";
                 }
             }
+        }
+
+        public async void TestChatgpt(string s)
+        {
+            var client = new HttpClient();
+            var data = new
+            {
+                model = "gpt-3.5-turbo",
+                messages = new Message[] {new Message{role="user",content=s}, // 此处role和content对应api中参数，不可修改
+                                                                                }
+            };
+            var requestBody = JsonConvert.SerializeObject(data);
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", apiKey);
+            var content = new StringContent(requestBody, System.Text.Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(url, content);
+            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
         }
 
 

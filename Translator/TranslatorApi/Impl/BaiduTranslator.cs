@@ -23,6 +23,12 @@ namespace Translator.TranslatorApi.Impl
         // 默认翻译选项
         string Action = Settings.BaiduGlossary;
 
+        public void CheckUpdate()
+        {
+            AppId = Settings.BaiduAppId;
+            Key = Settings.BaiduKey;
+        }
+
         public async Task<string> TranslateAsync(string text, string src, string dst)
         {
             StringBuilder sb = new StringBuilder();
@@ -70,6 +76,15 @@ namespace Translator.TranslatorApi.Impl
         }
 
 
+        public void SetAppId(string s)
+        {
+            AppId = s;
+        }
+
+        public void SetKey(string s)
+        {
+            Key = s;
+        }
         private string Sign(string text,UInt32 salt)
         {
             return Common.MD5IN32(AppId + text + salt + Key);

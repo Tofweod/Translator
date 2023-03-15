@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Translator.TranslatorApi;
 
 namespace Translator.SettingPages.TranslatorPages
 {
@@ -41,6 +42,7 @@ namespace Translator.SettingPages.TranslatorPages
                 config.AppSettings.Settings["BaiduAppId"].Value = appID.Text;
             }
             Settings.BaiduAppId = appID.Text;
+            UpdateChanges();
         }
 
         private void Key_TextChanged(object sender, TextChangedEventArgs e)
@@ -55,6 +57,12 @@ namespace Translator.SettingPages.TranslatorPages
                 config.AppSettings.Settings["BaiduKey"].Value = key.Text;
             }
             Settings.BaiduKey = key.Text;
+            UpdateChanges();
+        }
+
+        private void UpdateChanges()
+        {
+            Common.GetTranslatorDict()["百度翻译"].CheckUpdate();
         }
     }
 }

@@ -21,5 +21,7 @@ namespace Translator.TranslatorApi.Impl
             return null;
         }
 
+        public void CheckUpdate() { }
+
     }
 }
