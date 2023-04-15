@@ -35,6 +35,11 @@ namespace Translator
         string dst_lang;
 
         bool valid;
+        bool peneration = false;
+
+        int outTime;
+        int timeoutCount;
+
 
         public MainWindow()
         {
@@ -46,6 +51,10 @@ namespace Translator
             src_lang = Settings.Src_Lang;
             dst_lang = Settings.Dst_Lang;
             valid = Settings.Valid;
+            outTime = Settings.TranslateTimeout;
+            timeoutCount = 0;
+
+
 
             // 设置句柄、定时器
             hwnd = new WindowInteropHelper(this).Handle;
@@ -53,11 +62,14 @@ namespace Translator
             timer.Interval = TimeSpan.FromMilliseconds(10);
             timer.Tick += timer_Tick;
             timer.Start();
+
         }
 
+   
+
         #region 置顶函数
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        private static extern int SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int Width, int Height, int flags);
+        [DllImport("user32.dll")]
+        private static extern int SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int y, int Width, int Height, uint flags);
         #endregion
 
         #region 消息钩子预定义参数
@@ -161,8 +173,9 @@ namespace Translator
         {
             if (this.WindowState != WindowState.Minimized)
             {
-                SetWindowPos(hwnd, -1, 0, 0, 0, 0, 1 | 2);
+                SetWindowPos(hwnd, -1, 0, 0, 0, 0, 0x0001 | 0x0002);
             }
+            
         }
 
 
@@ -188,12 +201,14 @@ namespace Translator
                 var completedTask = await Task.WhenAny(task, Task.Delay(timeout, timeoutCancellationTokenSource.Token));
                 if (completedTask == task)
                 {
+                    timeoutCount = 0;
                     timeoutCancellationTokenSource.Cancel();
                     return await task;  // Very important in order to propagate exceptions
                 }
                 else
                 {
-                   return "翻译请求超时";
+                   timeoutCount++;
+                   return "翻译请求超时-times:"+timeoutCount;
                 }
             }
         }
@@ -252,11 +267,6 @@ namespace Translator
         }
 
 
-        public void SetV(string s)
-        {
-            source_lang.Text = s;
-        }
-
         public void SetTranslator(ITranslator t)
         {
             translator = t;
@@ -272,8 +282,21 @@ namespace Translator
             dst_lang = s;
         }
 
+        public void SetTimeOut(int t)
+        {
+            outTime = t;
+        }
+
         private void Penetration_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (peneration)
+            {
+                Background.Opacity = 0;
+            }
+            else
+            {
+                Background.Opacity = 1;
+            }
             //IntPtr hwnd = ((HwndSource)PresentationSource.FromVisual(Body)).Handle;
             //SetWindowLong(hwnd, GWL_EXSTYLE,
             //    GetWindowLong(hwnd, GWL_EXSTYLE) | WS_EX_TRANSPARENT);

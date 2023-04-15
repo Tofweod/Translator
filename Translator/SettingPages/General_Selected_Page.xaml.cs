@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HandyControl.Tools.Extension;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -35,6 +36,7 @@ namespace Translator.SettingPages
 
 
             TranslatorCombox.SelectedIndex = Common.GetTranslatorIndex(Settings.TranslatorName);
+            TranslateTimeout.Text = Settings.TranslateTimeout.ToString();
             SrcLangCombox.SelectedIndex = Common.GetLangIndex(Settings.Src_Lang);
             DstLangCombox.SelectedIndex = Common.GetLangIndex(Settings.Dst_Lang);
         }
@@ -50,6 +52,23 @@ namespace Translator.SettingPages
                 mainWindow.SetTranslator(Common.GetTranslatorDict()[Settings.TranslatorName]);
                 //　写入config中
                 config.AppSettings.Settings["Translator"].Value = TranslatorName;
+            }
+            string translateTimeout = TranslateTimeout.Text;
+            if (!string.IsNullOrEmpty(translateTimeout))
+            {
+                int timeout;
+                try
+                {
+                   timeout  = int.Parse(translateTimeout);
+                }
+                catch
+                {
+                    MessageBox.Show("输入数字格式有误");
+                    return;
+                }
+                Settings.TranslateTimeout = timeout;
+                mainWindow.SetTimeOut(timeout);
+                config.AppSettings.Settings["TranslateTimeout"].Value = timeout.ToString();
             }
             string src = (string)SrcLangCombox.SelectedValue;
             string dst = (string)DstLangCombox.SelectedValue;

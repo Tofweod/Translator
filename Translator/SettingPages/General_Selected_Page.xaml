@@ -11,9 +11,10 @@
 
     <Grid>
         <Canvas>
-            <hc:ComboBox Name="TranslatorCombox" Width="160"  Canvas.Left="250" Canvas.Top="85"  hc:TitleElement.Title="翻译API:" hc:TitleElement.TitlePlacement="Left" ></hc:ComboBox>
+            <hc:ComboBox Name="TranslatorCombox" Width="160"  Canvas.Left="130" Canvas.Top="85"  hc:TitleElement.Title="翻译API:" hc:TitleElement.TitlePlacement="Left" ></hc:ComboBox>
+            <hc:TextBox Name="TranslateTimeout" Width="180" hc:TitleElement.Title="翻译超时(ms):" hc:TitleElement.TitlePlacement="Left" Canvas.Left="380" Canvas.Top="85"></hc:TextBox>
             <hc:ComboBox Name="SrcLangCombox" Width="130" Canvas.Left="130" Canvas.Top="155"  hc:TitleElement.Title="源语言:" hc:TitleElement.TitlePlacement="Left"></hc:ComboBox>
-            <hc:ComboBox Name="DstLangCombox" Width="140" Canvas.Left="400" Canvas.Top="155" hc:TitleElement.Title="目标语言:" hc:TitleElement.TitlePlacement="Left"></hc:ComboBox>
+            <hc:ComboBox Name="DstLangCombox" Width="140" Canvas.Left="389" Canvas.Top="155" hc:TitleElement.Title="目标语言:" hc:TitleElement.TitlePlacement="Left" HorizontalAlignment="Left" VerticalAlignment="Center"></hc:ComboBox>
             <Button Content="确认" Canvas.Left="470" Canvas.Top="250" Click="General_Click"></Button>
         </Canvas>
     </Grid>
